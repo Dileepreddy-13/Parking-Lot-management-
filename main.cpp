@@ -1,8 +1,30 @@
 #include<iostream>
+#include<vector>
+#include<map>
+#include<queue>
+
 using namespace std;
-int main()
+
+class Vehicle
 {
-    cout<<"DS PROJECT";
-    cout<<"Parking-Lot-management";
-    return 0;
-}
+    public:
+    string number;
+    string type;
+    Vehicle(string num,string t)
+    {
+        number=num;
+        type=t;
+    }
+};
+class ParkingSlot
+{
+    int slotId;
+    string type;
+    bool isOccupied;
+    ParkingSlot(int id,string t)
+    {
+        slotId=id;
+        type=t;
+        isOccupied=false;
+    }
+};
