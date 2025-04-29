@@ -138,6 +138,7 @@ void ParkingLot::displayStatus()
             cout<<"Available"<<endl;
         }
     }
+    cout<<"------------------"<<endl;
     cout<<"Queues"<<endl;
     cout<<"Car Queue : "<<carQueue.size()<<endl;
     cout<<"Bike Queue : "<<bikeQueue.size()<<endl;
@@ -166,10 +167,10 @@ int main()
         cout<<"2.Remove Vehicle"<<endl;
         cout<<"3.Display Status"<<endl;
         cout<<"4.Exit"<<endl;
+        cout<<"------------------"<<endl;
         cout<<"Enter Your Choice"<<endl;
-
         cin>>choice;
-        
+        cout<<"------------------"<<endl;
         switch(choice)
         {
             case 1:
@@ -205,6 +206,7 @@ int main()
                 cout<<"Invalid choice. Try again"<<endl;
             }
         }
+        cout<<"------------------"<<endl;
     }
     return 0;
 }
