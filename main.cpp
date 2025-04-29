@@ -55,19 +55,19 @@ void ParkingLot::parkVehicle(Vehicle v)
         {
             slot.isOccupied=true;
             VehicleToslot[v.number]=slot.slotId;
-            cout<<"Vehicle "<<v.number<<"is parked at "<<slot.slotId<<endl;
+            cout<<"Vehicle "<<v.number<<" is parked at "<<slot.slotId<<endl;
             parked=true ;
             break;
         }
     }
     if(!parked)
     {
-        if(v.type=="car")carQueue.push(v);
+        if(!(v.type=="car"||v.type=="bike"||v.type=="truck"))
+        cout<<"invalid vehicle type."<<endl;
+        else if(v.type=="car")carQueue.push(v);
         else if(v.type=="bike")bikeQueue.push(v);
         else if(v.type=="truck")truckQueue.push(v);
-        cout<<"No slot available for "<<v.number<<".Added to queue."<<endl;
-        if(!(v.type=="car")||!(v.type=="bike")||!(v.type=="truck"))
-        cout<<"invalid vehicle"<<endl;
+        else cout<<"No slot available for "<<v.number<<".Added to queue."<<endl;
 
     }
 }
@@ -167,10 +167,44 @@ int main()
         cout<<"3.Display Status"<<endl;
         cout<<"4.Exit"<<endl;
         cout<<"Enter Your Choice"<<endl;
+
         cin>>choice;
+        
         switch(choice)
         {
-            
+            case 1:
+            {
+                string number,type;
+                cout<<"Enter Vehicle Number :"<<endl;
+                cin>>number;
+                cout<<"Enter Vehicle Type :"<<endl;
+                cin>>type;
+                lot.parkVehicle(Vehicle(number,type));
+                break;
+            }
+            case 2:
+            {
+                string number;
+                cout<<"Enter Vehicle Number :"<<endl;
+                cin>>number;
+                lot.removeVehicle(number);
+                break;
+            }
+            case 3:
+            {
+                lot.displayStatus();
+                break;
+            }
+            case 4:
+            {
+                cout<<"Exiting program."<<endl;
+                exit(0);
+            }
+            default:
+            {
+                cout<<"Invalid choice. Try again"<<endl;
+            }
         }
     }
+    return 0;
 }
