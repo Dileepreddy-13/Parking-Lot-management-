@@ -2,6 +2,8 @@
 #include<vector>
 #include<map>
 #include<queue>
+#include<algorithm>
+#include<cctype>
 
 using namespace std;
 
@@ -144,6 +146,7 @@ void ParkingLot::displayStatus()
     cout<<"Bike Queue : "<<bikeQueue.size()<<endl;
     cout<<"Truck Queue : "<<truckQueue.size()<<endl;
 }
+
 int main()
 {
     ParkingLot lot;
@@ -178,8 +181,10 @@ int main()
                 string number,type;
                 cout<<"Enter Vehicle Number :"<<endl;
                 cin>>number;
+                transform(number.begin(),number.end(),number.begin(), ::toupper);
                 cout<<"Enter Vehicle Type :"<<endl;
                 cin>>type;
+                transform(type.begin(),type.end(),type.begin(), ::tolower);
                 lot.parkVehicle(Vehicle(number,type));
                 break;
             }
@@ -188,6 +193,7 @@ int main()
                 string number;
                 cout<<"Enter Vehicle Number :"<<endl;
                 cin>>number;
+                transform(number.begin(),number.end(),number.begin(), ::toupper);
                 lot.removeVehicle(number);
                 break;
             }
